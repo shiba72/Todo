@@ -1,0 +1,22 @@
+h1{
+  text-align: center;
+  font-size: 30px;
+}
+.new-account{
+  text-align: center;
+  margin:60px auto;
+}
+.new-account p{
+  font-weight: bold;
+}
+
+.login-box{
+  text-align: center;
+  margin:60px auto;
+}
+.login-box{
+  font-weight: bold;
+}
+.example-button-row{
+  margin-top: 20px;
+}

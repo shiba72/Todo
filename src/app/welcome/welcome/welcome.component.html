@@ -1,0 +1,40 @@
+<div class="wrapper">
+  <h1>Todoアプリ</h1>
+  <div class="new-account">
+    <p>アカウントの新規作成はこちら</p>
+    <form class="example-form" (ngSubmit)="accountCreated()">
+      <mat-form-field class="example-full-width">
+        <mat-label>メールアドレス</mat-label>
+        <input matInput [formControl]="emailFormControl" placeholder="Ex.pat@example.com">
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          有効なメールアドレスを入力してください
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          必須入力です
+        </mat-error>
+      </mat-form-field>
+      <div class="example-button-row">
+        <button mat-raised-button color="accent">登録する</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="login-box">
+    <p>ログインはこちら</p>
+    <form class="example-form" (ngSubmit)="submit()">
+      <mat-form-field class="example-full-width">
+        <mat-label>メールアドレス</mat-label>
+        <input matInput [formControl]="loginFormControl" placeholder="Ex.pat@example.com">
+        <mat-error *ngIf="loginFormControl.hasError('email') && !loginFormControl.hasError('required')">
+          有効なメールアドレスを入力してください
+        </mat-error>
+        <mat-error *ngIf="loginFormControl.hasError('required')">
+          必須入力です
+        </mat-error>
+      </mat-form-field>
+      <div class="example-button-row">
+        <button mat-raised-button color="primary">ログイン</button>
+      </div>
+    </form>
+  </div>
+</div>

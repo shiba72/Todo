@@ -1,0 +1,13 @@
+.list{
+  border: solid 1px gray;
+  border-radius: 5px;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
+  text-align: center;
+}
+.title-text{
+  font-weight: bold;
+  font-size: 20px;
+}
+.content-text{
+  font-size:18px;
+}
