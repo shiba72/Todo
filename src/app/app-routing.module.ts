@@ -13,7 +13,7 @@ const routes: Routes = [
     loadChildren: () => import('./create/create.module').then(m => m.CreateModule)
   },
   {
-    path:'home',
+    path:'list',
     loadChildren: () => import('./list/list.module').then(m => m.ListModule)
   },
   {

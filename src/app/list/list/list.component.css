@@ -1,8 +1,26 @@
+h2{
+  text-align: center;
+  font-size: 30px;
+  margin: 40px 0px;
+}
+.router-create{
+  width: 100%;
+  text-align: center;
+  margin-bottom: 40px;
+}
+a{
+  color: skyblue;
+  font-size: 20px;
+}
+.status{
+  text-align: center;
+}
 .list{
   border: solid 1px gray;
   border-radius: 5px;
   box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
   text-align: center;
+  margin:20px 0px;
 }
 .title-text{
   font-weight: bold;
@@ -11,3 +29,4 @@
 .content-text{
   font-size:18px;
 }
+
