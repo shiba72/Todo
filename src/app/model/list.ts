@@ -1,7 +1,7 @@
 export class List {
 
   public id: string;
-  public UserId: string;
+  public userId: string;
   public createDateTime: Date;
   public updateDateTime:Date;
   public title: string;
@@ -10,7 +10,7 @@ export class List {
 
   constructor(id :string, userId :string, createDateTime :Date,updateDateTime :Date,title: string,content: string,status: string) {
     this.id = id;
-    this.UserId = userId;
+    this.userId = userId;
     this.createDateTime = createDateTime;
     this.updateDateTime = updateDateTime;
     this.title = title;

@@ -48,13 +48,13 @@ export class CreateComponent implements OnInit {
     console.log('おぶ'+JSON.stringify(this.userIId));
     //console.log('直前'+this.inputLoginId);
     var ListTmp = new List(
-      JSON.stringify(this.userIId.replace(/\"/g, '\"\"')),
-      JSON.stringify(this.userIId),
+      this.userIId,
+      this.userIId,
       null,
       null,
       this.inputTitle.value,
       this.inputContent.value,
-      '未完了'
+      "未完了"
     );
     //console.log('後'+this.inputLoginId);
     this.createList(ListTmp);

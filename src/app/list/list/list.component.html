@@ -1,23 +1,59 @@
+
 <div class="wrapper">
-  <h2>Todoリスト一覧</h2>
+  <h2>Todoリスト</h2>
   <div class="router-create">
     <a routerLink="/create">Todoリスト作成へ</a>
   </div>
   <div class="status">
     <button mat-stroked-button color="primary" (click)="doLists()">完了リスト一覧</button>
     <button mat-stroked-button color="accent" (click)="didLists()">未完了リスト一覧</button>
+    <button mat-stroked-button  (click)="dodidLists()">一覧</button>
   </div>
-<!--todoLists-->
-  <div class="list" *ngFor="let alist of ArrayList">
-    <div class="list__title">
-      <p class="title-text">{{alist.title}}</p>
+
+  <!--todoLists-->
+  <div [ngSwitch]="templateFlg">
+    <div *ngSwitchCase="3">
+      <div class="list" *ngFor="let lists of showLists">
+        <div class="list__title">
+          <p class="title-text">{{lists.title}}</p>
+        </div>
+        <div class="list__content">
+          <p class="content-text">{{lists.content}}</p>
+        </div>
+        <div class="status">
+          <button mat-button color="primary">完了</button>
+          <button mat-button color="accent">未完了</button>
+        </div>
+      </div>
     </div>
-    <div class="list__content">
-      <p class="content-text">{{alist.content}}</p>
+    <div *ngSwitchCase="1">
+      <div class="list" *ngFor="let dolists of showDoLists">
+        <div class="list__title">
+          <p class="title-text">{{dolists.title}}</p>
+        </div>
+        <div class="list__content">
+          <p class="content-text">{{dolists.content}}</p>
+        </div>
+        <div class="status">
+          <button mat-button color="primary">完了</button>
+          <button mat-button color="accent">未完了</button>
+        </div>
+      </div>
     </div>
-    <div class="status">
-      <button mat-button color="primary">完了</button>
-      <button mat-button color="accent">未完了</button>
+
+    <div *ngSwitchCase="2">
+      <div class="list" *ngFor="let didlists of showDidLists">
+        <div class="list__title">
+          <p class="title-text">{{didlists.title}}</p>
+        </div>
+        <div class="list__content">
+          <p class="content-text">{{didlists.content}}</p>
+        </div>
+        <div class="status">
+          <button mat-button color="primary">完了</button>
+          <button mat-button color="accent">未完了</button>
+        </div>
+      </div>
+      </div>
     </div>
-  </div>
 </div>
