@@ -21,6 +21,9 @@ export class CreateComponent implements OnInit {
     createContent: ['',[
       Validators.required,
       Validators.maxLength(30)
+    ]],
+    createStatus:['',[
+      Validators.pattern(/完了| 未完了/)
     ]]
   })
   get titleControl(){
@@ -39,6 +42,7 @@ export class CreateComponent implements OnInit {
 
   inputTitle = this.createForm.get('createTitle') as FormControl;
   inputContent = this.createForm.get('createContent') as FormControl;
+  inputStatus = this.createForm.get('createStatus') as FormControl;
   userIId = JSON.parse(localStorage.getItem('jsonVal')).loginUserId;
   //inputLoginId = JSON.parse(localStorage.getItem('jsonVal')).loginUserId ;
   ngOnInit() {
@@ -46,6 +50,7 @@ export class CreateComponent implements OnInit {
     //console.log(this.inputLoginId);
   }
   sub(){
+    console.log(this.inputStatus.value);
     console.log(this.inputTitle.value);//入力したtitle
     console.log(this.inputContent.value);
     console.log('おぶ'+JSON.stringify(this.userIId));
@@ -57,7 +62,7 @@ export class CreateComponent implements OnInit {
       null,
       this.inputTitle.value,
       this.inputContent.value,
-      "未完了"
+      this.inputStatus.value
     );
     //console.log('後'+this.inputLoginId);
     this.createList(ListTmp);
@@ -68,10 +73,10 @@ export class CreateComponent implements OnInit {
       .subscribe(list => {
         console.log('create list:'+ list);
       });
-      this.snackbar.open('Todoリスト作成完了' , null ,{
-        duration: 3000
-      })
-      this.router.navigateByUrl('/list');
+      //this.snackbar.open('Todoリスト作成完了' , null ,{
+      //  duration: 3000
+      //})
+      //this.router.navigateByUrl('/list');
 
   }
 
