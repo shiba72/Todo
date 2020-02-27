@@ -2,6 +2,28 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
 
+# SetUp
+
+ `git clone https://github.com/shiba72/Todo.git `
+ 
+ `cd Todo `
+ 
+ `npm install`
+ 
+ `ng build`
+ 
+ `ng serve`
+
+# Route
+-Top Page(Please,Create an account and log in)
+http://localhost:4200/welcome
+
+-Create Page (Create some todoLists)
+http://localhost:4200/create
+
+-Look at Todo lists (You can search by status) 
+http://localhost:4200/list
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
