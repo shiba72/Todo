@@ -14,7 +14,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
  
  `ng serve`
 
-# Route
+# Local Path (Route) 
 -Top Page(Please,Create an account and log in)
 http://localhost:4200/welcome
 
