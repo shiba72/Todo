@@ -3,7 +3,7 @@ h2{
   font-size: 30px;
   margin: 40px 0px;
 }
-.router-create{
+.router-list{
   width: 100%;
   text-align: center;
   margin-bottom: 40px;
@@ -29,4 +29,10 @@ a{
 .content-text{
   font-size:18px;
 }
+.router-logout{
+  width: 100%;
+  text-align: center;
+  margin: 60px 0px;
+}
+
 

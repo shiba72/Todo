@@ -59,7 +59,7 @@ export class WelcomeComponent implements OnInit {
       duration: 3000
     })
     //for (  var k = 0;  k < 3 ;  k++  ){
-    setTimeout('location.reload();', 100);
+    setTimeout('location.reload();', 1000);
     ////クロスサーバーの関係 2回リダイレクト
     //}　手動でリダイレクト
   }

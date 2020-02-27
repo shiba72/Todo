@@ -39,7 +39,8 @@ export class ListComponent implements OnInit {
   }
   ngOnInit() {}
   dodidLists(){
-    this.templateFlg = 3;
+    this.showLists.length=0;
+    this.templateFlg = 3;//ngSwitchの分岐用
     //location.reload();
     //userIdが一致するTodoListを表示
     for (  var k = 0;  k < this.ArrayList.length ;  k++  ) {
@@ -53,7 +54,8 @@ export class ListComponent implements OnInit {
     console.log(this.showLists);
   }
   doLists(){
-    this.templateFlg = 1;
+    this.showDoLists.length=0;
+    this.templateFlg = 1;//ngSwitchの分岐用
     console.log('完了済み一覧');
     for (  var k = 0;  k < this.ArrayList.length ;  k++  ) {
       if (this.ArrayList[k].userId === JSON.parse(localStorage.getItem('jsonVal')).loginUserId && this.ArrayList[k].status === '完了'){
@@ -65,7 +67,8 @@ export class ListComponent implements OnInit {
     }
   }
   didLists() {
-    this.templateFlg = 2;
+    this.showDidLists.length=0;
+    this.templateFlg = 2;//ngSwitchの分岐用
     console.log('未完了一覧');
     for (  var k = 0;  k < this.ArrayList.length ;  k++  ) {
       if (this.ArrayList[k].userId === JSON.parse(localStorage.getItem('jsonVal')).loginUserId && this.ArrayList[k].status === '未完了'){

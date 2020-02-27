@@ -5,6 +5,7 @@ import { ListService } from 'src/app/services/list.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/model/user';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -31,7 +32,9 @@ export class CreateComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private listService: ListService,
-    private authService: AuthService
+    private authService: AuthService,
+    private snackbar: MatSnackBar,
+    private router: Router
   ) { }
 
   inputTitle = this.createForm.get('createTitle') as FormControl;
@@ -65,6 +68,11 @@ export class CreateComponent implements OnInit {
       .subscribe(list => {
         console.log('create list:'+ list);
       });
+      this.snackbar.open('Todoリスト作成完了' , null ,{
+        duration: 3000
+      })
+      this.router.navigateByUrl('/list');
+
   }
 
 }

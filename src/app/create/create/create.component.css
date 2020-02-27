@@ -2,6 +2,15 @@ h2{
   text-align: center;
   font-size: 30px;
 }
+.router-create{
+  width: 100%;
+  text-align: center;
+  margin-bottom: 40px;
+}
+a{
+  color: skyblue;
+  font-size: 20px;
+}
 .title-input{
   width: 80%;
   display: block;
@@ -15,4 +24,9 @@ h2{
 .create-btn{
   display: block;
   margin:30px auto;
+}
+.router-logout{
+  width: 100%;
+  text-align: center;
+  margin-bottom: 40px;
 }
