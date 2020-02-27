@@ -4,14 +4,16 @@
   <div class="router-list">
     <a routerLink="/create">Todoリスト作成へ</a>
   </div>
+  <!--ステータス検索-->
   <div class="status">
     <button mat-stroked-button color="primary" (click)="doLists()">完了リスト一覧</button>
     <button mat-stroked-button color="accent" (click)="didLists()">未完了リスト一覧</button>
     <button mat-stroked-button  (click)="dodidLists()">一覧</button>
   </div>
 
-  <!--todoLists-->
+  <!--Todoリストをステータスによって切り替えて表示-->
   <div [ngSwitch]="templateFlg">
+    <!--Todoリスト一覧を表示-->
     <div *ngSwitchCase="3">
       <div class="list" *ngFor="let lists of showLists">
         <div class="list__title">
@@ -22,6 +24,7 @@
         </div>
       </div>
     </div>
+    <!--完了のTodoリストを表示-->
     <div *ngSwitchCase="1">
       <div class="list" *ngFor="let dolists of showDoLists">
         <div class="list__title">
@@ -32,7 +35,7 @@
         </div>
       </div>
     </div>
-
+    <!--未完了のTodoリストを表示-->
     <div *ngSwitchCase="2">
       <div class="list" *ngFor="let didlists of showDidLists">
         <div class="list__title">

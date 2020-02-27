@@ -9,12 +9,12 @@ import { ListService } from 'src/app/services/list.service';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  private templateFlg :number = 0;
+  private templateFlg = 0; // クライアント側でフィルターするため。ngSwitchの分岐に使う
   @Input() list: List;
   ArrayList = new Array<List>();
-  showLists :any = new Array<List>();
-  showDoLists :any = new Array<List>();
-  showDidLists :any = new Array<List>();
+  showLists:　any = new Array<List>();
+  showDoLists:　any = new Array<List>();
+  showDidLists:　any = new Array<List>();
   constructor(
     private client: HttpClient,
     private listService: ListService
@@ -33,50 +33,40 @@ export class ListComponent implements OnInit {
           item.content,
           item.status
         );
-      })
-      console.log('ログインしてるユーザーは:'+JSON.parse(localStorage.getItem('jsonVal')).loginUserId+'さん');
-    })
+      });
+      console.log('ログインしてるユーザーは:' + JSON.parse(localStorage.getItem('jsonVal')).loginUserId + 'さん');
+    });
   }
   ngOnInit() {}
-  dodidLists(){
-    this.showLists.length=0;
-    this.templateFlg = 3;//ngSwitchの分岐用
-    //location.reload();
-    //userIdが一致するTodoListを表示
-    for (  var k = 0;  k < this.ArrayList.length ;  k++  ) {
-      if (this.ArrayList[k].userId === JSON.parse(localStorage.getItem('jsonVal')).loginUserId){
-        console.log('あなたの記事番号'+k);
+  // 全てのTodoリストを取得
+  dodidLists() {
+    this.showLists.length = 0;
+    this.templateFlg = 3; // ngSwitchの分岐用
+    // userIdが一致するTodoListを表示
+    for ( var k = 0;  k < this.ArrayList.length ;  k++  ) {
+      if (this.ArrayList[k].userId === JSON.parse(localStorage.getItem('jsonVal')).loginUserId) {
         this.showLists.push(this.ArrayList[k]);
-      } else {
-        console.log('それ以外'+k);
-      }
+      } else {}
     }
-    console.log(this.showLists);
   }
-  doLists(){
-    this.showDoLists.length=0;
-    this.templateFlg = 1;//ngSwitchの分岐用
-    console.log('完了済み一覧');
-    for (  var k = 0;  k < this.ArrayList.length ;  k++  ) {
+  // 完了のTodoリストを取得
+  doLists() {
+    this.showDoLists.length = 0;
+    this.templateFlg = 1; // ngSwitchの分岐用
+    for ( var k = 0;  k < this.ArrayList.length ;  k++  ) {
       if (this.ArrayList[k].userId === JSON.parse(localStorage.getItem('jsonVal')).loginUserId && this.ArrayList[k].status === '完了'){
-        console.log('あなたの完了済みの数'+k);
         this.showDoLists.push(this.ArrayList[k]);
-      } else {
-        console.log('それ以外'+k);
-      }
+      } else {}
     }
   }
+  // 未完了のTodoリストを取得
   didLists() {
-    this.showDidLists.length=0;
-    this.templateFlg = 2;//ngSwitchの分岐用
-    console.log('未完了一覧');
-    for (  var k = 0;  k < this.ArrayList.length ;  k++  ) {
+    this.showDidLists.length = 0; // 毎回空にする。
+    this.templateFlg = 2; // ngSwitchの分岐用
+    for ( var k = 0;  k < this.ArrayList.length ;  k++  ) {
       if (this.ArrayList[k].userId === JSON.parse(localStorage.getItem('jsonVal')).loginUserId && this.ArrayList[k].status === '未完了'){
-        console.log('あなたの未完了の数'+k);
         this.showDidLists.push(this.ArrayList[k]);
-      } else {
-        console.log('それ以外'+k);
-      }
+      } else {}
     }
   }
 

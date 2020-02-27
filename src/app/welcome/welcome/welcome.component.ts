@@ -12,16 +12,17 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
-  errMessage:string;//htmlで返す値の型
+  // ログインエラーの際のメッセージ
+  errMessage: string;
+  // フォームについて
   emailFormControl = new FormControl('', [
     Validators.required,
-    //Validators.email,//後で消す e-mailじゃなくでもいい
   ]);
 
   loginFormControl = new FormControl('', [
     Validators.required,
-    //Validators.email//後で消す e-mailじゃなくでもいい
   ]);
+  // ユーザー
   ArrayUser = new Array<User>();
   constructor(
     private fb: FormBuilder,
@@ -29,23 +30,22 @@ export class WelcomeComponent implements OnInit {
     private router: Router,
     private snackbar: MatSnackBar
   ) {
+    // サービスと連携してユーザー情報を取得
     authService.user().subscribe( response => {
-      console.log(response);
-      console.log(response.length);
       this.ArrayUser = response.map(item => {
-        console.log(item);
         return new User(
           item.id,
           item.mail,
           item.createDateTime,
           item.updateDateTime
         );
-      })
-    })
+      });
+    });
   }
   ngOnInit() {
   }
-  accountCreated(){
+  // 新規アカウント作成
+  accountCreated() {
     console.log(this.emailFormControl.value);
     var UserTmp = new User(
       this.emailFormControl.value,
@@ -54,45 +54,33 @@ export class WelcomeComponent implements OnInit {
       null
     );
     this.createUser(UserTmp);
-    console.log("アカウント制作完了");
-    this.snackbar.open('作成完了' , null ,{
+    this.snackbar.open('作成完了' , null , {
       duration: 3000
-    })
-    //for (  var k = 0;  k < 3 ;  k++  ){
+    });
+    // アカウント作成後にリダイレクト
     setTimeout('location.reload();', 1000);
-    ////クロスサーバーの関係 2回リダイレクト
-    //}　手動でリダイレクト
   }
-  submit(){
-    console.log(this.loginFormControl.value);
+  // ログイン処理
+  submit()　{
+    // 入力したメールアドレスと同じメールアドレスがデータベースにあったログイン成功
     for (  var i = 0;  i < this.ArrayUser.length ;  i++  ) {
-      // 繰り返し処理
-      console.log(i);
-      console.log(this.ArrayUser[i]);
-      console.log(this.ArrayUser[i].mail);
-
-           //ID見比べ
-     if ( this.loginFormControl.value === this.ArrayUser[i].mail){
-      console.log("loginOK");
-      var jsonVal = {loginUserId:this.loginFormControl.value};//ローカルストレージ
-      localStorage.setItem('jsonVal', JSON.stringify(jsonVal));
-      console.log(JSON.parse(localStorage.getItem('jsonVal')).loginUserId);
-      this.snackbar.open('ログイン成功' , null ,{
-        duration: 3000
-      })
-      this.router.navigateByUrl('/create');
-
-    } else {
-      console.log("NG");
-      this.errMessage ='正しいメールアドレスを入れてください';
-    }
-     //console.log(this.ArrayUser[i])
-     }
+      if ( this.loginFormControl.value === this.ArrayUser[i].mail) {
+        var jsonVal = {loginUserId: this.loginFormControl.value};
+        localStorage.setItem('jsonVal', JSON.stringify(jsonVal)); // ローカルストレージにユーザーを保存
+        this.snackbar.open('ログイン成功' , null ,　{ //成功したらスナックバーを表示
+          duration: 3000
+        });
+        this.router.navigateByUrl('/create'); //Todoリスト作成画面へ遷移
+        } else {
+         this.errMessage = '正しいメールアドレスを入れてください';
+      }
+       }
   }
+  // ユーザー作成
   createUser(user: User): void {
     this.authService.createUser(user)
-      .subscribe(user => {
-        console.log('create user:'+ user);
+      .subscribe( user => {
+        console.log('create user:' + user);
       });
   }
 

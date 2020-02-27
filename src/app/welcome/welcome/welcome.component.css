@@ -1,22 +1,25 @@
+/* 見出し */
 h1{
   text-align: center;
   font-size: 30px;
 }
+/* 新規アカウント作成フォーム */
 .new-account{
   text-align: center;
-  margin:60px auto;
+  margin: 60px auto;
 }
 .new-account p{
   font-weight: bold;
 }
-
+/* ログインフォーム */
 .login-box{
   text-align: center;
-  margin:60px auto;
+  margin: 60px auto;
 }
 .login-box{
   font-weight: bold;
 }
-.example-button-row{
+/* ボタン */
+.example-button{
   margin-top: 20px;
 }

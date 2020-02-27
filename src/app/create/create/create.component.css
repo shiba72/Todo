@@ -1,7 +1,9 @@
+/* 見出し */
 h2{
   text-align: center;
   font-size: 30px;
 }
+/* リストへ */
 .router-create{
   width: 100%;
   text-align: center;
@@ -11,6 +13,7 @@ a{
   color: skyblue;
   font-size: 20px;
 }
+/* Todoリストの内容 */
 .title-input{
   width: 80%;
   display: block;
@@ -24,13 +27,15 @@ a{
 .status-input{
   margin: 40px auto;
   display: block;
-  width:100%;
-  text-align:center;
+  width: 100%;
+  text-align: center;
 }
+/* ボタン */
 .create-btn{
   display: block;
-  margin:30px auto;
+  margin: 30px auto;
 }
+/* ログアウト */
 .router-logout{
   width: 100%;
   text-align: center;

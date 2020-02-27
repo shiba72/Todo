@@ -3,6 +3,7 @@
   <div class="router-create">
     <a routerLink="/list">Todoリストへ</a>
   </div>
+  <!--Todoリスト作成フォーム-->
   <form [formGroup]="createForm" (ngSubmit)="sub()">
     <mat-form-field class="title-input" appearance="outline">
       <mat-label>タイトル</mat-label>
@@ -22,6 +23,7 @@
     </mat-radio-group>
     <button [disabled]="createForm.invalid" mat-raised-button color="primary" class="create-btn">作成</button>
   </form>
+  <!--ログアウト-->
   <div class="router-logout">
     <a routerLink="/welcome">ログアウト</a>
   </div>

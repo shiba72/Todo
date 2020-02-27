@@ -13,6 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class CreateComponent implements OnInit {
   @Input() loginUser : User;
+  // Todoリスト作成フォーム
   createForm =this.fb.group({
     createTitle: ['',[
       Validators.required,
@@ -39,22 +40,16 @@ export class CreateComponent implements OnInit {
     private snackbar: MatSnackBar,
     private router: Router
   ) { }
-
+  // Todoリスト作成フォームで入力した内容を変数へ代入
   inputTitle = this.createForm.get('createTitle') as FormControl;
   inputContent = this.createForm.get('createContent') as FormControl;
   inputStatus = this.createForm.get('createStatus') as FormControl;
   userIId = JSON.parse(localStorage.getItem('jsonVal')).loginUserId;
-  //inputLoginId = JSON.parse(localStorage.getItem('jsonVal')).loginUserId ;
   ngOnInit() {
     console.log('ログインしてるユーザーは:'+JSON.parse(localStorage.getItem('jsonVal')).loginUserId+'さん');
-    //console.log(this.inputLoginId);
   }
+  // Todoリスト
   sub(){
-    console.log(this.inputStatus.value);
-    console.log(this.inputTitle.value);//入力したtitle
-    console.log(this.inputContent.value);
-    console.log('おぶ'+JSON.stringify(this.userIId));
-    //console.log('直前'+this.inputLoginId);
     var ListTmp = new List(
       this.userIId,
       this.userIId,
@@ -64,19 +59,17 @@ export class CreateComponent implements OnInit {
       this.inputContent.value,
       this.inputStatus.value
     );
-    //console.log('後'+this.inputLoginId);
     this.createList(ListTmp);
-    console.log('List店舗'+JSON.stringify(ListTmp));
   }
   createList(list: List): void {
     this.listService.createList(list)
       .subscribe(list => {
         console.log('create list:'+ list);
       });
-      //this.snackbar.open('Todoリスト作成完了' , null ,{
+      //this.snackbar.open('Todoリスト作成完了' , null ,{ //成功したらスナックバーを表示
       //  duration: 3000
-      //})
-      //this.router.navigateByUrl('/list');
+      //});
+      //this.router.navigateByUrl('/list'); //Todoリスト一覧画面へ遷移
 
   }
 

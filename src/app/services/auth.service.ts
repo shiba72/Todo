@@ -7,22 +7,18 @@ import { User } from '../model/user';
   providedIn: 'root'
 })
 export class AuthService {
-  User() {
-    throw new Error("Method not implemented.");
-  }
+
 
   constructor(private http: HttpClient) { }
-  public user(): Observable<User[]>
-  {
+  public user(): Observable<User[]> {
+    // 既存のTodoリストの情報をGET
     const url = 'https://oceanic-airway-268105.appspot.com/samples/getAllUsers';
-    console.log(this.http.get<User[]>(url));
     return this.http.get<User[]>(url);
   }
   public createUser(user: User): Observable<User[]> {
-    // APIのURL、送信したいデータを指定してpost()を呼び出す。
+    // 作成したTodoリストの情報をPOST
     const createUserUrl = 'https://oceanic-airway-268105.appspot.com/samples/addUser';
-    console.log(this.http.post<User[]>(createUserUrl,user));
-    return this.http.post<User[]>(createUserUrl,user);
+    return this.http.post<User[]>(createUserUrl, user);
   }
 
 }

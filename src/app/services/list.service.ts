@@ -6,18 +6,16 @@ import { List } from '../model/list';
   providedIn: 'root'
 })
 export class ListService {
-  //リスト作成
+  // リスト作成
   constructor(private http: HttpClient) { }
   public createList(list: List): Observable<List[]> {
-    // APIのURL、送信したいデータを指定してpost()を呼び出す。
+    // 新規作成したユーザー情報をPOST
     const createListUrl = 'https://oceanic-airway-268105.appspot.com/samples/addList';
-    //console.log(this.http.post<List[]>(createListUrl,list));
-    return this.http.post<List[]>(createListUrl,list);
+    return this.http.post<List[]>(createListUrl, list);
   }
 
-  //リスト取得
-  public allList(): Observable<List[]>
-  {
+  // リスト取得
+  public allList(): Observable<List[]> {  // 既存の全ユーザー情報をGET
     const allListUrl = 'https://oceanic-airway-268105.appspot.com/samples/getAllLists';
     console.log(this.http.get<List[]>(allListUrl));
     return this.http.get<List[]>(allListUrl);

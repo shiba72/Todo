@@ -1,5 +1,6 @@
 <div class="wrapper">
   <h1>Todoアプリ</h1>
+  <!--新規アカウント作成-->
   <div class="new-account">
     <p>アカウントの新規作成はこちら</p>
     <form class="example-form" (ngSubmit)="accountCreated()">
@@ -13,12 +14,12 @@
           必須入力です
         </mat-error>
       </mat-form-field>
-      <div class="example-button-row">
+      <div class="example-button">
         <button mat-raised-button color="accent">登録する</button>
       </div>
     </form>
   </div>
-
+  <!--ログイン-->
   <div class="login-box">
     <p>ログインはこちら</p>
     <form class="example-form" (ngSubmit)="submit()">
@@ -32,7 +33,7 @@
           必須入力です
         </mat-error>
       </mat-form-field>
-      <div class="example-button-row">
+      <div class="example-button">
         <button mat-raised-button color="primary">ログイン</button>
       </div>
         <p>{{errMessage}}</p>
