@@ -21,7 +21,7 @@ http://localhost:4200/welcome
 -Create Page (Create some todoLists)
 http://localhost:4200/create
 
--Look at Todo lists (You can search by status) 
+-Todo lists Page (You can search by status) 
 http://localhost:4200/list
 
 ## Development server
